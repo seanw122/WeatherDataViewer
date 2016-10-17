@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F407E97D-211A-438D-852F-A95A95BF9DAE}</ProjectGuid>
+    <ProjectGuid>{FB12BA97-7E21-4030-AD21-2C34397A314B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WeatherUnderground</RootNamespace>
-    <AssemblyName>WeatherUnderground</AssemblyName>
+    <RootNamespace>WeatherDataViewer.Common</RootNamespace>
+    <AssemblyName>WeatherDataViewer.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\WeatherDataViewer\bin\Debug\Plugins\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -39,11 +39,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,20 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataTransformation.cs" />
-    <Compile Include="ForecastData.cs" />
-    <Compile Include="Hourly10DayData.cs" />
+    <Compile Include="Deserializer.cs" />
+    <Compile Include="IWeatherDataGetter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WeatherUnderground.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WeatherDataViewer.Common\WeatherDataViewer.Common.csproj">
-      <Project>{fb12ba97-7e21-4030-ad21-2c34397a314b}</Project>
-      <Name>WeatherDataViewer.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

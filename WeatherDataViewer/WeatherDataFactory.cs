@@ -1,67 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
 using System.IO;
-using System.Linq;
 using System.Reflection;
+using WeatherDataViewer.Common;
 
 namespace WeatherDataViewer
 {
     internal class WeatherDataFactory
     {
-        private readonly List<Type> _weatherDataClasses;
- 
         public WeatherDataFactory()
         {
-            _weatherDataClasses = LoadWeatherDataClasses();
+            var aggCat = new AggregateCatalog();
+            var dirCat = new DirectoryCatalog(Path.Combine(Environment.CurrentDirectory, "Plugins"));
+            var asmCat = new AssemblyCatalog(Assembly.GetExecutingAssembly());
+
+            aggCat.Catalogs.Add(dirCat);
+            aggCat.Catalogs.Add(asmCat);
+
+            var compContainer = new CompositionContainer(aggCat);
+            compContainer.ComposeParts(this);
+
+            BuildGetters();
         }
 
-        public List<Type> LoadedWeatherDataClasses => _weatherDataClasses;
-
-        private List<Type> LoadWeatherDataClasses()
+        private void BuildGetters()
         {
-            var type = typeof(IWeatherDataGetter);
-            var types = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(s => s.GetTypes())
-                .Where(p => type.IsAssignableFrom(p) && p.IsClass);
-
-            var typeList = types.ToList();
-
-            foreach (var loadPlugInAssembly in LoadPlugInAssemblies())
+            WeatherGetters = new Dictionary<string, IWeatherDataGetter>();
+            foreach (var weatherDataGetter in _weatherGetters)
             {
-                var pluginTypes = loadPlugInAssembly.GetTypes()
-                    .Where(p => type.IsAssignableFrom(p) && p.IsClass);
-                foreach (var pluginType in pluginTypes)
-                {
-                    typeList.Add(pluginType);
-                }
+                WeatherGetters.Add(weatherDataGetter.Name, weatherDataGetter);
             }
-            return typeList;
         }
 
-        public IWeatherDataGetter GetWeatherDataClass(string name)
-        {
-            if (_weatherDataClasses == null)
-                return null;
+        [ImportMany(typeof(IWeatherDataGetter))]
+        private IEnumerable<IWeatherDataGetter> _weatherGetters;
 
-            return Activator.CreateInstance(_weatherDataClasses.Find(x => x.Name == name)) as IWeatherDataGetter;
-        }
-
-        private List<Assembly> LoadPlugInAssemblies()
-        {
-            var dInfo = new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, "Plugins"));
-            FileInfo[] files = dInfo.GetFiles("*.dll");
-            var plugInAssemblyList = new List<Assembly>();
-
-            if (files.Any())
-            {
-                foreach (FileInfo file in files)
-                {
-                    plugInAssemblyList.Add(Assembly.LoadFile(file.FullName));
-                }
-            }
-
-            return plugInAssemblyList;
-
-        }
+        public Dictionary<string, IWeatherDataGetter> WeatherGetters { get; set; }
     }
 }

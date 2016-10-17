@@ -9,9 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMap", "OpenWeath
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherUnderground", "WeatherUnderground\WeatherUnderground.csproj", "{F407E97D-211A-438D-852F-A95A95BF9DAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherDataViewer.Common", "WeatherDataViewer.Common\WeatherDataViewer.Common.csproj", "{FB12BA97-7E21-4030-AD21-2C34397A314B}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://seanw.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
@@ -24,6 +26,9 @@ Global
 		SccProjectUniqueName3 = WeatherUnderground\\WeatherUnderground.csproj
 		SccProjectName3 = WeatherUnderground
 		SccLocalPath3 = WeatherUnderground
+		SccProjectUniqueName4 = WeatherDataViewer.Common\\WeatherDataViewer.Common.csproj
+		SccProjectName4 = WeatherDataViewer.Common
+		SccLocalPath4 = WeatherDataViewer.Common
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +47,10 @@ Global
 		{F407E97D-211A-438D-852F-A95A95BF9DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F407E97D-211A-438D-852F-A95A95BF9DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F407E97D-211A-438D-852F-A95A95BF9DAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB12BA97-7E21-4030-AD21-2C34397A314B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB12BA97-7E21-4030-AD21-2C34397A314B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB12BA97-7E21-4030-AD21-2C34397A314B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB12BA97-7E21-4030-AD21-2C34397A314B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
