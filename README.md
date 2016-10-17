@@ -8,4 +8,4 @@ This project is used for the talk "From Bad Code to Plug-In Architecture". It st
 
 v1.0 Initial version.
 v1.1 Added code for Open Weather Map.
-v1.2 Uses Poor Man's IoC for the factory to find classes implementing the IWeatherDataGetter interface. Split out the code for Weather Underground and Open Weather Map to their own files. 
+v1.2 Uses Poor Man's IoC for the factory to find classes implementing the IWeatherDataGetter interface. Split out the code for Weather Underground and Open Weather Map to their own files.
