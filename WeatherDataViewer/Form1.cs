@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -6,34 +7,54 @@ namespace WeatherDataViewer
 {
     public partial class Form1 : Form
     {
+        WeatherDataFactory _weatherDataFactory;
+
         public Form1()
         {
             InitializeComponent();
+            LoadPlugins();
+        }
+
+        private void LoadPlugins()
+        {
+            _weatherDataFactory = new WeatherDataFactory();
+
+            foreach (var weatherDataClass in _weatherDataFactory.LoadedWeatherDataClasses)
+            {
+                var checkBox = new CheckBox {Text = weatherDataClass.Name, Width = 200};
+                panel2.Controls.Add(checkBox);
+            }
         }
 
         private void btnGetData_Click(object sender, EventArgs e)
         {
+            if (panel2.Controls.Cast<CheckBox>().All(x => x.Checked == false))
+                return;
+
             var results = String.Empty;
             btnGetData.Enabled = false;
+            tbData.Invoke(new MethodInvoker(() => tbData.Text = ""));
 
-            var weatherDataFactory = new WeatherDataFactory();
-
-            var weatherUnderground = weatherDataFactory.GetWeatherDataClass("WeatherUnderground");
-            var openWeatherMap = weatherDataFactory.GetWeatherDataClass("OpenWeatherMap");
-
-            var t = new Task(() =>
+            foreach (CheckBox control in panel2.Controls)
             {
-                results = weatherUnderground.GetWeatherData();
-                results += "\r\n\r\n" + openWeatherMap.GetWeatherData();
-            });
+                if (control.Checked)
+                {
+                    var weatherDataClass = _weatherDataFactory.GetWeatherDataClass(control.Text);
 
-            var t2 = t.ContinueWith((antecedent) =>
-            {
-                tbData.Text = results;
-                btnGetData.Enabled = true;
-            }, TaskScheduler.FromCurrentSynchronizationContext());
+                    var t = new Task(() =>
+                    {
+                        results = weatherDataClass.GetWeatherData();
+                    });
 
-            t.Start();
+                    var t2 = t.ContinueWith((antecedent) =>
+                    {
+                        tbData.Text += results + "\r\n\r\n";
+                        btnGetData.Enabled = true;
+                    }, TaskScheduler.FromCurrentSynchronizationContext());
+
+                    t.Start();
+                }
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 namespace WeatherDataViewer
 {
-    internal interface IWeatherDataGetter
+    public interface IWeatherDataGetter
     {
         string GetWeatherData();
     }

@@ -5,15 +5,25 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherDataViewer", "WeatherDataViewer\WeatherDataViewer.csproj", "{197A74E5-BFBE-4D02-BB53-0967F14F1A5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMap", "OpenWeatherMap\OpenWeatherMap.csproj", "{6DBA32A3-56D7-41B8-893E-4200382BC2F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherUnderground", "WeatherUnderground\WeatherUnderground.csproj", "{F407E97D-211A-438D-852F-A95A95BF9DAE}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
+		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://seanw.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = WeatherDataViewer\\WeatherDataViewer.csproj
 		SccProjectName1 = WeatherDataViewer
 		SccLocalPath1 = WeatherDataViewer
+		SccProjectUniqueName2 = OpenWeatherMap\\OpenWeatherMap.csproj
+		SccProjectName2 = OpenWeatherMap
+		SccLocalPath2 = OpenWeatherMap
+		SccProjectUniqueName3 = WeatherUnderground\\WeatherUnderground.csproj
+		SccProjectName3 = WeatherUnderground
+		SccLocalPath3 = WeatherUnderground
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +34,14 @@ Global
 		{197A74E5-BFBE-4D02-BB53-0967F14F1A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{197A74E5-BFBE-4D02-BB53-0967F14F1A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{197A74E5-BFBE-4D02-BB53-0967F14F1A5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DBA32A3-56D7-41B8-893E-4200382BC2F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DBA32A3-56D7-41B8-893E-4200382BC2F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DBA32A3-56D7-41B8-893E-4200382BC2F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DBA32A3-56D7-41B8-893E-4200382BC2F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F407E97D-211A-438D-852F-A95A95BF9DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F407E97D-211A-438D-852F-A95A95BF9DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F407E97D-211A-438D-852F-A95A95BF9DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F407E97D-211A-438D-852F-A95A95BF9DAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
